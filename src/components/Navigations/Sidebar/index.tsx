@@ -4,8 +4,8 @@ import { usePathname, useRouter } from "next/navigation";
 import MenuLink from "../MenuLink";
 import classes from "./styles.module.scss";
 import { useDispatch } from "react-redux";
-import { clearToken } from "@/config/store/auth/slice";
-import { useSystemColorScheme } from "@/hooks/useSystemColorScheme";
+// import { clearToken } from "@/config/store/auth/slice";
+// import { useSystemColorScheme } from "@/hooks/useSystemColorScheme";
 import User from '@/assets/images/user-image.png';
 import Profile from "../Profile";
 import { JSX } from "react";
@@ -49,9 +49,6 @@ const Sidebar = ({ setShowSidebar, showSidebar }: any): JSX.Element => {
   const router = useRouter();
   const pathname = usePathname();
 
-//   const systemColorScheme = useSystemColorScheme();
-//   const dark = systemColorScheme === "dark";
-
   const splittedCurrentPathname = pathname.split("/");
   const modifiedPathname = splittedCurrentPathname.toSpliced(-1, 1).join("/");
 
@@ -60,10 +57,10 @@ const Sidebar = ({ setShowSidebar, showSidebar }: any): JSX.Element => {
     router.push(link);
   };
 
-  const handleLogout = () => {
-    dispatch(clearToken());
-    router.replace("/login");
-  };
+//   const handleLogout = () => {
+//     dispatch(clearToken());
+//     router.replace("/login");
+//   };
 
   const links = data.map((item, index) => {
     return (
@@ -86,37 +83,32 @@ const Sidebar = ({ setShowSidebar, showSidebar }: any): JSX.Element => {
     >
       <div onClick={() => setShowSidebar(false)} className="mobileSidebarBg" />
       <nav
-        className={`${classes.sidebar} lg:w-[250px] h-screen overflow-y-auto justify-between`}
+        className={`${classes.sidebar} lg:w-[96px] h-screen overflow-y-auto justify-between `}
       >
-        <div className="flex flex-col w-full h-full">
-          <div className="h-[88px] flex justify-start px-sm items-center">
-            <Link
-              href={`${modifiedPathname}/dashboard`}
+        <div className="flex flex-col w-full h-full justify-between">
+          <div className="h-[88px] flex justify-center px-sm items-center">
+            {/* <Link
+              href={`${modifiedPathname}/movielist`}
               className={"flex items-center gap-sm "}
             >
-              {dark ? (
-                <Logo color="fill-white" width={34} height={28} />
-              ) : (
-                <Logo color="fill-dark-600" width={34} height={28} />
-              )}
-              <div className="text-h2 font-medium">Eduflow</div>
+              <MovieList className="fill-[#FC4747]"/>
+            </Link> */}
+            <Link
+                href={`${modifiedPathname}/movielist`}
+                className={`max-w-[32px] w-full h-[27px] items-center rounded-[20px] text-[#FC4747]`}
+                onClick={() => handleMenuLinkClick("./movielist")}
+            >
+                <div className="w-full h-full">
+                    <MovieList className="fill-[#FC4747]"/>
+                </div>
             </Link>
           </div>
-          <Profile image={User} name={"name"} department={"Student Department"} />
+          
           <div className="flex flex-col gap-[6px] pt-[20px] px-sm">
             <div className="flex flex-col gap-sm">{links}</div>
           </div>
         </div>
-        <Link 
-          href={""}
-          onClick={handleLogout}
-          className="flex items-center gap-sm px-xl"
-        >
-          <div className="w-[23px] h-[24px] ">
-            <Logout color={dark ? "fill-grey-100" : "fill-dark-900"} />
-          </div>
-          <div className={`text-dark-900 dark:text-grey-100 text-p-sm`}>Logout</div>
-        </Link>
+       <Profile image={User}/>
       </nav>
     </aside>
   );
