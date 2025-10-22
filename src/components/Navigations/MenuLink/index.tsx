@@ -18,7 +18,8 @@ const MenuLink = ({
   onClick,
   activeIcon,
 }: MenuLinkProps): ReactNode => {
-  const iconColorClass = activeState ? "fill-[#FC4747]" : "fill-[#5A698F] hover:fill-white";
+  const iconColorClass = activeState ? "fill-[#FC4747]" : "fill-[#5A698F]";
+//    hover:fill-white
   return (
       <Link
         href={link}

@@ -1,9 +1,7 @@
-import Image from "next/image";
+import { redirect } from 'next/navigation';
 
-export default function Home() {
-  return (
-    <div>
-      <h1>Welcome to My Entertainment App</h1>
-    </div>
-  );
-}
+const RootPage = (): void => {
+  redirect("/login");
+};
+
+export default RootPage;

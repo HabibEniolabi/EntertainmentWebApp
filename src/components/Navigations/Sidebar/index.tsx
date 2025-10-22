@@ -17,14 +17,14 @@ import TvSeries from "@/src/assets/icons/TvSeries";
 import MovieList from "@/src/assets/icons/MovieList";
 
 const data = [
-  {
-    link: "/movielist",
-    icon: <MovieList color={"fill-[#5A698F]"} />,
-    activeIcon: <MovieList color={"fill-{#FC4747}"}  />,
-  },
+//   {
+//     link: "/movielist",
+//     icon: <MovieList color={"fill-[#5A698F]"} />,
+//     activeIcon: <MovieList color={"fill-{#FC4747}"}  />,
+//   },
   {
     link: "/trending",
-    icon: <Trending color={"fill-[#5A698F]"} />,
+    icon: <Trending color={"fill-white"} />,
     activeIcon: <Trending color={"fill-{#FC4747}"} />,
   },
   {
