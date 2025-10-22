@@ -5,6 +5,7 @@ import { ColorSchemeScript, MantineProvider, mantineHtmlProps } from '@mantine/c
 import { ReactNode } from 'react';
 // import { store } from "../";
 import { Provider } from 'react-redux';
+import StoreProvider from './providers';
 
 export const metadata = {
   title: 'My Entertainment app',
@@ -22,11 +23,11 @@ const RootLayout = ({ children }: RootLayoutProps) => {
         <ColorSchemeScript />
       </head>
       <body>
-        {/* <Provider store={store}> */}
+        <StoreProvider>
           <MantineProvider>
             {children}
           </MantineProvider>
-        {/* </Provider> */}
+        </StoreProvider>
       </body>
     </html>
   );
