@@ -4,43 +4,35 @@ import { usePathname, useRouter } from "next/navigation";
 import MenuLink from "../MenuLink";
 import classes from "./styles.module.scss";
 import { useDispatch } from "react-redux";
-// import { clearToken } from "@/config/store/auth/slice";
-// import { useSystemColorScheme } from "@/hooks/useSystemColorScheme";
-import User from '@/assets/images/user-image.png';
+import User from '@/src/assets/images/image-avatar.png';
 import Profile from "../Profile";
 import { JSX } from "react";
 import Bookmark from "@/src/assets/icons/Bookmark";
 import Movie from "@/src/assets/icons/Movie";
 import Trending from "@/src/assets/icons/Trending";
-import Search from "@/src/assets/icons/Search";
 import TvSeries from "@/src/assets/icons/TvSeries";
 import MovieList from "@/src/assets/icons/MovieList";
 
 const data = [
-//   {
-//     link: "/movielist",
-//     icon: <MovieList color={"fill-[#5A698F]"} />,
-//     activeIcon: <MovieList color={"fill-{#FC4747}"}  />,
-//   },
   {
     link: "/trending",
-    icon: <Trending color={"fill-white"} />,
-    activeIcon: <Trending color={"fill-{#FC4747}"} />,
+    icon: <Trending className={"fill-white w-6 h-6 "} />,
+    activeIcon: <Trending className={"fill-{#FC4747}"} />,
   },
   {
     link: "/movie",
-    icon: <Movie color={"fill-[#5A698F]"} />,
-    activeIcon: <Movie color={"fill-{#FC4747}"} />,
+    icon: <Movie className={"fill-[#5A698F]"} />,
+    activeIcon: <Movie className={"fill-{#FC4747}"} />,
   },
   {
     link: "/series",
-    icon: <TvSeries color={"fill-[#5A698F]"} />,
-    activeIcon: <TvSeries color={"fill-{#FC4747}"} />,
+    icon: <TvSeries className={"fill-[#5A698F]"} />,
+    activeIcon: <TvSeries className={"fill-{#FC4747}"} />,
   },
   {
     link: "/bookmark",
-    icon: <Bookmark color={"fill-[#5A698F]"} />,
-    activeIcon: <Bookmark color={"fill-{#FC4747}"} />,
+    icon: <Bookmark className={"fill-[#5A698F]"} />,
+    activeIcon: <Bookmark className={"fill-{#FC4747}"} />,
   }
 ];
 
@@ -94,16 +86,15 @@ const Sidebar = ({ setShowSidebar, showSidebar }: any): JSX.Element => {
               <MovieList className="fill-[#FC4747]"/>
             </Link> */}
             <Link
-                href={`${modifiedPathname}/movielist`}
+                href={`${modifiedPathname}/movie-list`}
                 className={`max-w-[32px] w-full h-[27px] items-center rounded-[20px] text-[#FC4747]`}
-                onClick={() => handleMenuLinkClick("./movielist")}
+                onClick={() => handleMenuLinkClick("./movie-list")}
             >
                 <div className="w-full h-full">
                     <MovieList className="fill-[#FC4747]"/>
                 </div>
             </Link>
-          </div>
-          
+          </div> 
           <div className="flex flex-col gap-[6px] pt-[20px] px-sm">
             <div className="flex flex-col gap-sm">{links}</div>
           </div>

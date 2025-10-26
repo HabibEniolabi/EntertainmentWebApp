@@ -1,0 +1,45 @@
+// .sidebar {
+//   display: flex;
+//   flex-direction: column;
+//   position: relative;
+//   background-color: transparent;
+//   transition: max-width 0.5s ease-in-out, padding 0.5s ease-in-out;
+//   z-index: 8;
+//   @apply w-full border-r-1 border-solid border-grey-100 border-b-0 border-l-0 border-t-0 pb-xl;
+// }
+
+// .aside {
+//   display: none;
+//   @apply max-w-[272px] w-full md:block;
+// }
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: #161D2F;
+  transition: max-width 0.5s ease-in-out, padding 0.5s ease-in-out;
+  z-index: 8;
+  
+  /* Replaced @apply with actual CSS properties */
+  width: 100%;
+  border-right: 1px solid;
+  border-left: 0;
+  border-top: 0;
+  border-bottom: 0;
+  border-style: solid;
+  border-color: #e5e7eb; /* Tailwind's grey-100 equivalent */
+  padding-bottom: 6rem; /* Tailwind's xl padding (24 * 0.25rem = 6rem) */
+}
+
+.aside {
+  display: none;
+  
+  /* Replaced @apply with actual CSS properties */
+  max-width: 272px;
+  width: 100%;
+  
+  @media (min-width: 768px) { /* md breakpoint */
+    display: block;
+  }
+}
