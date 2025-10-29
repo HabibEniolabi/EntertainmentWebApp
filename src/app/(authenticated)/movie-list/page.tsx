@@ -1,11 +1,9 @@
-import React from 'react';
+"use client";
+import React from "react";
+import MovieList from "@/src/app/views/Movie-Lists"
 
-const MovieList = () => {
-  return (
-    <div>
-      <h1>Movie recommendations</h1>
-    </div>
-  );
-}
+const MovieLists = () => {
+  return <MovieList />
+};
 
-export default MovieList;
+export default MovieLists;

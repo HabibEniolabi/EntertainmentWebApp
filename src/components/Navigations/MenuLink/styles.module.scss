@@ -1,6 +1,41 @@
-.aside{
+.menuLink {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  gap: 16px;
+  padding: 0 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background-color: transparent;
+  
+  // Hover state - only icon changes to red
+  &:hover {
+    .iconWrapper {
+      svg, path {
+        fill: #FC4747 !important;
+      }
+    }
+  }
+  
+  // Active state - ONLY icon color changes, NO background
+  &.active {
+    // NO background color here!
+    .iconWrapper {
+      svg, path {
+        fill: white !important; // Icon turns red when active
+      }
+    }
+  }
+  
+  .iconWrapper {
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 20px;
+    justify-content: center;
+    
+    // Default inactive color
+    svg, path {
+      transition: fill 0.3s ease;
+      fill: #5A698F;
+    }
+  }
 }

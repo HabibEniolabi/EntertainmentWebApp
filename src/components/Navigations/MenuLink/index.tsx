@@ -19,17 +19,18 @@ const MenuLink = ({
   onClick,
   activeIcon,
 }: MenuLinkProps): ReactNode => {
-  const color = activeState ? "#FC4747" : "#5A698F";
+  const color = activeState ? "white" : "#5A698F";
+  
   return (
       <Link
         href={link}
-        className={`h-[32px] flex gap-md items-center  ${activeState}`}
+        className={`${styles.menuLink} ${activeState && styles.active}`}
         onClick={onClick}
       >
-        <div className={styles.aside}>
+        <div className={styles.iconWrapper}>
           {activeState
             ? React.cloneElement(activeIcon, { color })
-            : React.cloneElement(icon, {  color })}
+            : React.cloneElement(icon, { color })}
         </div>
       </Link>
   );
