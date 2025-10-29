@@ -12,27 +12,28 @@ import Movie from "@/src/assets/icons/Movie";
 import Trending from "@/src/assets/icons/Trending";
 import TvSeries from "@/src/assets/icons/TvSeries";
 import MovieList from "@/src/assets/icons/MovieList";
+import styles from "./styles.module.scss";
 
 const data = [
   {
     link: "/trending",
-    icon: <Trending className={"fill-white w-6 h-6 "} />,
-    activeIcon: <Trending className={"fill-{#FC4747}"} />,
+    icon: <Trending color="white" width={20} height={20}/>,
+    activeIcon: <Trending color="#FC4747" width={20} height={20}/>,
   },
   {
     link: "/movie",
-    icon: <Movie className={"fill-[#5A698F]"} />,
-    activeIcon: <Movie className={"fill-{#FC4747}"} />,
+    icon: <Movie color="#5A698F" width={20} height={20}/>,
+    activeIcon: <Movie color="#FC4747" width={20} height={20}/>,
   },
   {
     link: "/series",
-    icon: <TvSeries className={"fill-[#5A698F]"} />,
-    activeIcon: <TvSeries className={"fill-{#FC4747}"} />,
+    icon: <TvSeries color="#5A698F" width={20} height={20}/>,
+    activeIcon: <TvSeries color="#FC4747" width={20} height={20}/>,
   },
   {
     link: "/bookmark",
-    icon: <Bookmark className={"fill-[#5A698F]"} />,
-    activeIcon: <Bookmark className={"fill-{#FC4747}"} />,
+    icon: <Bookmark color="#5A698F" width={20} height={20}/>,
+    activeIcon: <Bookmark color="#FC4747" width={20} height={20}/>,
   }
 ];
 
@@ -75,28 +76,19 @@ const Sidebar = ({ setShowSidebar, showSidebar }: any): JSX.Element => {
     >
       <div onClick={() => setShowSidebar(false)} className="mobileSidebarBg" />
       <nav
-        className={`${classes.sidebar} lg:w-[96px] h-screen overflow-y-auto justify-between `}
+        className={`${classes.sidebar} lg:w-[250px] h-full flex flex-col justify-between `}
       >
-        <div className="flex flex-col w-full h-full justify-between">
-          <div className="h-[88px] flex justify-center px-sm items-center">
-            {/* <Link
-              href={`${modifiedPathname}/movielist`}
-              className={"flex items-center gap-sm "}
-            >
-              <MovieList className="fill-[#FC4747]"/>
-            </Link> */}
+        <div className={styles.menu}>
             <Link
                 href={`${modifiedPathname}/movie-list`}
-                className={`max-w-[32px] w-full h-[27px] items-center rounded-[20px] text-[#FC4747]`}
                 onClick={() => handleMenuLinkClick("./movie-list")}
             >
-                <div className="w-full h-full">
-                    <MovieList className="fill-[#FC4747]"/>
+                <div className={styles.icon}>
+                    <MovieList className="#FC4747" width={32} height={26}/>
                 </div>
             </Link>
-          </div> 
-          <div className="flex flex-col gap-[6px] pt-[20px] px-sm">
-            <div className="flex flex-col gap-sm">{links}</div>
+          <div className={styles.menuLinks}>
+              {links}
           </div>
         </div>
        <Profile image={User}/>

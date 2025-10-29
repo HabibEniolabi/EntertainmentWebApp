@@ -2,13 +2,14 @@
 import type { ReactNode } from "react";
 import React from "react";
 import Link from "next/link";
+import styles from "./styles.module.scss";
 
 interface MenuLinkProps {
-  icon: React.ReactElement<any>;
+  icon: React.ReactElement<{ color?: string }>;
   activeState: boolean;
   link: string;
   onClick: () => void;
-  activeIcon: React.ReactElement<any>;
+  activeIcon: React.ReactElement<{ color?: string }>;
 }
 
 const MenuLink = ({
@@ -18,18 +19,17 @@ const MenuLink = ({
   onClick,
   activeIcon,
 }: MenuLinkProps): ReactNode => {
-  const iconColorClass = activeState ? "fill-[#FC4747]" : "fill-[#5A698F]";
-//    hover:fill-white
+  const color = activeState ? "#FC4747" : "#5A698F";
   return (
       <Link
         href={link}
-        className={`max-w-[20px] w-full h-[20px] items-center  ${activeState}`}
+        className={`h-[32px] flex gap-md items-center  ${activeState}`}
         onClick={onClick}
       >
-        <div className="w-[24px] h-[24px]">
+        <div className={styles.aside}>
           {activeState
-            ? React.cloneElement(activeIcon, { iconColorClass })
-            : React.cloneElement(icon, {  iconColorClass })}
+            ? React.cloneElement(activeIcon, { color })
+            : React.cloneElement(icon, {  color })}
         </div>
       </Link>
   );

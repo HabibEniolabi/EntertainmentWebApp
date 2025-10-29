@@ -2,7 +2,7 @@ import * as React from "react"
 import { SVGProps } from "react"
 
 interface PathBookmarkProps extends SVGProps<SVGSVGElement> {
-    className?: string;
+    className: string;
 }
 const PathBookmark = ({className, ...props}: PathBookmarkProps) => (
   <svg
