@@ -80,8 +80,8 @@ const Sidebar = ({ setShowSidebar, showSidebar }: any): JSX.Element => {
       >
         <div className={styles.menu}>
             <Link
-                href={`${modifiedPathname}/movie-list`}
-                onClick={() => handleMenuLinkClick("./movie-list")}
+                href={`${modifiedPathname}/trending`}
+                onClick={() => handleMenuLinkClick("./trending")}
             >
                 <div className={styles.icon}>
                     <MovieList className="#FC4747" width={32} height={26}/>

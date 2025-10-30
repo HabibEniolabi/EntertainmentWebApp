@@ -1,5 +1,6 @@
 import React from 'react';
 import Image, { StaticImageData } from 'next/image';
+import styles from "./styles.module.scss";
 
 
 interface ProfileProps {
@@ -8,7 +9,7 @@ interface ProfileProps {
 
 const Profile = ({image}: ProfileProps) => {
   return (
-      <div className='w-[40px] h-[40px] rounded-full overflow-hidden border-2 border-white'>
+      <div className={styles.profile}>
         <Image src={typeof image === 'string' ? image : image.src} width={40} height={40} alt="Profile" className='w-full h-full object-cover'/>
       </div>
   );
