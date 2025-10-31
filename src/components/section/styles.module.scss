@@ -1,20 +1,18 @@
-// components/TrendingSection/styles.module.scss
-
-.trending-section {
+.trendingSection {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   padding-inline: 1rem;
   margin-top: 2rem;
 
-  .section-title {
+  .sectionTitle {
     font-size: 24px;
     font-weight: 300;
     color: #ffffff;
     letter-spacing: -0.5px;
   }
 
-  .trending-carousel {
+  .trendingCarousel {
     display: flex;
     gap: 1.5rem;
     overflow-x: auto;

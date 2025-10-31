@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@/src/lib/store';
 import { RootState } from '@/src/lib/store';
 import { fetchMedia } from '@/src/lib/store/slices/mediaSlice';
-// import './HomePage.scss';
 import { TrendingSection } from '@/src/components/section/TrendingSection';
 import { MediaGrid } from '@/src/components/card/MediaGrid/MediaGrid';
 
