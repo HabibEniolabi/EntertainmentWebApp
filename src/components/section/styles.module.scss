@@ -1,0 +1,43 @@
+// components/TrendingSection/styles.module.scss
+
+.trending-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-inline: 1rem;
+  margin-top: 2rem;
+
+  .section-title {
+    font-size: 24px;
+    font-weight: 300;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+  }
+
+  .trending-carousel {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 0.5rem;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    > * {
+      scroll-snap-align: start;
+      flex: 0 0 auto;
+      width: 240px;
+      border-radius: 10px;
+
+      @media (min-width: 768px) {
+        width: 300px;
+      }
+
+      @media (min-width: 1024px) {
+        width: 350px;
+      }
+    }
+  }
+}
