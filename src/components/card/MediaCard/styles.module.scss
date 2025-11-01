@@ -13,9 +13,44 @@
   }
 }
 
-.trending {
-  min-width: 470px;
-  height: 230px;
+.mediaCard.trending {
+  min-width: 470px; // Wider for trending
+  width: auto;
+
+  .imageContainer {
+    margin-bottom: 0;
+    height: 230px; // Fixed height for trending
+  }
+
+  .image {
+    height: 100%;
+    object-fit: cover; // Ensure image covers the container
+  }
+
+  .bookmark {
+    top: 16px;
+    right: 16px;
+  }
+
+  .info {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    right: 24px;
+    padding: 0;
+  }
+
+  .meta {
+    font-size: 13px;
+    margin-bottom: 8px;
+    gap: 8px;
+  }
+
+  .title {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.2;
+  }
 }
 
 .imageContainer {
