@@ -20,13 +20,18 @@ export const MediaCard: React.FC<MediaCardProps> = ({ item, variant = 'regular' 
     e.stopPropagation();
     dispatch(toggleBookmark(item.id));
   };
-
+  
   const getThumbnailSrc = () => {
-    if (variant === 'trending' && item.thumbnail.trending) {
-      return item.thumbnail.trending.large;
-    }
-    return item.thumbnail.regular.medium;
-  };
+  if (variant === 'trending' && item.thumbnail?.trending?.large) {
+    return item.thumbnail.trending.large;
+  }
+  return (
+    item.thumbnail?.regular?.large ||
+    item.thumbnail?.regular?.medium ||
+    item.thumbnail?.regular?.small ||
+    ''
+  );
+};
 
   const getCategoryIcon = () => {
     return item.category === 'Movie' ? <Movie color={'#979797'} width={12} height={12}/> : <TvSeries color={'#979797'} width={12} height={12}/>;
