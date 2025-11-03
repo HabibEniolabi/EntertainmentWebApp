@@ -17,7 +17,7 @@ const TvSeries = () => {
     const isSearching = searchQuery.length > 0;
     
     // Filter based on search
-    const filteredItems = items.filter(item =>
+    const filteredItems = tvSeries.filter(item =>
       item.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
   
