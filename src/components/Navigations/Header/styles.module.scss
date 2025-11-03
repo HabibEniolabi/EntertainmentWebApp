@@ -1,31 +1,6 @@
-// .header{
-//     display: flex;
-//     align-items: center;
-//     gap: 7px;
-// }
-
-// .input{
-//     width: 100%;
-//     flex: 1;
-//     padding-left: 15px;
-//     // padding-right: 40px;
-//     padding-top: 8px;
-//     padding-bottom: 8px;
-//     appearance: none;
-//     background-color: transparent;
-//     color: white;
-//     placeholder-color: #9ca3af; /* gray-400 */
-//     border-radius: 8px;
-//     border: 1px solid #10141E; /* gray-600 */
-//     font-size: 18px;
-// }
-
-// components/Header/styles.module.scss - COMPLETE VERSION
 .headerContainer {
   background: #10141E;
   color: white;
-  min-height: 100vh;
-  padding: 24px;
 }
 
 .searchSection {
@@ -98,7 +73,7 @@
   font-size: 20px;
   font-weight: 300;
   color: white;
-  margin-top: 8px; // Add minimal space only after search starts
+  margin-top: px; // Add minimal space only after search starts
   margin-bottom: 24px;
   font-family: 'Outfit', sans-serif;
 }

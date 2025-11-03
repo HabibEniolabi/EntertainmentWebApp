@@ -1,0 +1,81 @@
+.pageContent {
+  background: #10141E;
+  margin: 0 !important;
+  padding: 0 !important;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  gap: 0; /* eliminate section spacing */
+}
+
+/* Results Section */
+.resultsSection {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.resultsSection h1 {
+  font-size: 32px;
+  font-weight: 300;
+  color: white;
+  margin-top: 0 !important;
+  margin-bottom: 16px !important; /* smaller spacing above & below title */
+  padding: 0 !important;
+  font-family: 'Outfit', sans-serif;
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+    margin: 4px 0 16px 0 !important;
+  }
+}
+
+/* ✅ Fix for grid spacing */
+.resultsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(164px, 1fr));
+  gap: 15px;
+  margin: 0 !important;
+  padding: 0 !important;
+  /* remove any internal scroll or offset */
+  overflow: visible;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px 40px;
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 32px 40px;
+  }
+}
+
+/* Normal Content */
+.normalContent {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Sections inside normal content */
+.normalContent section {
+  margin: 0 0 40px 0 !important;
+  padding: 0 !important;
+
+  &:first-child {
+    margin-top: 0 !important;
+  }
+
+  &:last-child {
+    margin-bottom: 0 !important;
+  }
+}
+
+/* Fix for any phantom spacing around grids */
+.normalContent .trendingContent,
+.normalContent .recommendedContent,
+.resultsGrid {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
