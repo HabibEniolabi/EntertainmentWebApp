@@ -9,7 +9,7 @@ import { MediaCard } from '@/src/components/card/MediaCard/MediaCard';
 
 const Movie = () => {
   const dispatch = useAppDispatch();
-    const { recommended, loading, error, items } = useAppSelector((state: RootState) => state.media);
+    const { loading, error, items } = useAppSelector((state: RootState) => state.media);
     const searchParams = useSearchParams();
     const searchQuery = searchParams.get('q') || ''; // Just reading from URL
     const movies = items.filter(item => item.category === 'Movie');
@@ -17,7 +17,7 @@ const Movie = () => {
     const isSearching = searchQuery.length > 0;
     
     // Filter based on search
-    const filteredItems = items.filter(item =>
+    const filteredItems = movies.filter(item =>
       item.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
   
