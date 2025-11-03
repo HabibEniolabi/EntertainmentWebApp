@@ -9,10 +9,10 @@ import { MediaCard } from '@/src/components/card/MediaCard/MediaCard';
 
 const Movie = () => {
   const dispatch = useAppDispatch();
-    const { recommended, loading, error } = useAppSelector((state: RootState) => state.media);
+    const { recommended, loading, error, items } = useAppSelector((state: RootState) => state.media);
     const searchParams = useSearchParams();
     const searchQuery = searchParams.get('q') || ''; // Just reading from URL
-    const { items } = useAppSelector((state) => state.media);
+    const movies = items.filter(item => item.category === 'Movie');
     
     const isSearching = searchQuery.length > 0;
     
@@ -43,7 +43,7 @@ const Movie = () => {
       ) : (
         // Show normal home page content
         <div className={styles.normalContent}>
-           <MediaGrid items={recommended} title="Movies" />
+           <MediaGrid items={movies} title="Movies" />
         </div>
       )}
     </div>
