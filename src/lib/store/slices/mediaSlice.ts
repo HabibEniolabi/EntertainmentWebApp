@@ -53,15 +53,6 @@ const mediaSlice = createSlice({
     },
     toggleBookmark: (state, action: PayloadAction<string>) => {
       const itemId = action.payload;
-      // state.items = state.items.map(item =>
-      //   item.id === itemId ? { ...item, isBookmarked: !item.isBookmarked } : item
-      // );
-      // state.trending = state.trending.map(item =>
-      //   item.id === itemId ? { ...item, isBookmarked: !item.isBookmarked } : item
-      // );
-      // state.recommended = state.recommended.map(item =>
-      //   item.id === itemId ? { ...item, isBookmarked: !item.isBookmarked } : item
-      // );
       const updateBookmark = (item: MediaItem) => 
         item.id === itemId ? { ...item, isBookmarked: !item.isBookmarked } : item;
       
