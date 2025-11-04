@@ -59,7 +59,19 @@ const mediaSlice = createSlice({
       state.items = state.items.map(updateBookmark);
       state.trending = state.trending.map(updateBookmark);
       state.recommended = state.recommended.map(updateBookmark);
+
+      // ✅ persist to localStorage
+      localStorage.setItem('bookmarks', JSON.stringify(state.items));
     },
+    syncBookmarks: (state) => {
+      const stored = localStorage.getItem('bookmarks');
+      if (stored) {
+        const saved = JSON.parse(stored);
+        state.items = saved;
+        state.trending = saved.filter((i: MediaItem) => i.isTrending);
+        state.recommended = saved.filter((i: MediaItem) => !i.isTrending);
+      }
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -80,5 +92,5 @@ const mediaSlice = createSlice({
   },
 });
 
-export const { setMedia, toggleBookmark } = mediaSlice.actions;
+export const { setMedia, toggleBookmark, syncBookmarks } = mediaSlice.actions;
 export default mediaSlice.reducer;

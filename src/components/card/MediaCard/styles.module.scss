@@ -74,7 +74,7 @@
   position: absolute;
   top: 12px;
   right: 12px;
-  background: #979797;
+  background: rgba(16, 20, 30, 0.5); /* #10141E with 50% opacity */
   border-radius: 50%;
   width: 32px;
   height: 32px;
@@ -83,7 +83,16 @@
   justify-content: center;
   cursor: pointer;
   z-index: 5;
-  border: 1px solid #979797;
+  border: none; /* Remove border since we have background */
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.25); /* White with 25% opacity on hover */
+    
+    svg {
+      stroke: #FFFFFF;
+    }
+  }
 
   svg {
     width: 12px;
@@ -93,9 +102,17 @@
     transition: all 0.3s ease;
   }
 
-  &.bookmarked svg {
-    fill: white;
-    stroke: none;
+  &.bookmarked {
+    background: rgba(16, 20, 30, 0.5); /* Keep same background when bookmarked */
+    
+    svg {
+      fill: white;
+      stroke: white;
+    }
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.25); /* Same hover effect when bookmarked */
+    }
   }
 }
 
