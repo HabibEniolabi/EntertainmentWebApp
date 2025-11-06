@@ -1,0 +1,26 @@
+.loginPage{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+    scrollbar-width: none; /* Firefox */
+    background-color: #10141E;
+}
+
+.footer {
+      text-align: center;
+      color: #8b939e;
+      font-size: 0.875rem;
+
+      a {
+        color: #fc4747;
+        margin-left: 0.25rem;
+        font-weight: 500;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }

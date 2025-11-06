@@ -1,0 +1,35 @@
+:root {
+    --radius-lg: 0.5rem;
+    --font-size-h5: 1.25rem;
+    --font-weight-medium: 500;
+    --color-red-500: #ef4444;
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --color-gray-500: #6b7280;
+    --color-warning-900: #78350f;
+}
+
+.root {
+    font-variant-numeric: lining-nums proportional-nums ordinal;
+    font-feature-settings: "dlig" on, "case" on, "ss04" on;
+    border-radius: var(--radius-lg);
+    font-size: var(--font-size-h5);
+    font-weight: var(--font-weight-medium);
+    background-color: var(--color-red-500);
+    color: var(--color-white);
+    transition: all 0.3s ease;
+    
+    &:hover {
+        background-color: var(--color-white);
+        color: var(--color-black);
+    }
+
+    &[data-variant="default"] {
+        border: 1px solid var(--color-gray-500);
+        background-color: transparent;
+    }
+
+    &[data-variant="light"] {
+        background-color: var(--color-warning-900);
+    }
+}
