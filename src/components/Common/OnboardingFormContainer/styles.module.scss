@@ -4,8 +4,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xxl);
-  padding-top: var(--spacing-xxl);
+  gap: 60px;
   overflow-y: hidden;
 }
 
@@ -14,32 +13,47 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 var(--spacing-xxl);
 }
 
 .container {
-  background-color: #161d2f;
-  border-radius: var(--border-radius-lg);
-  border: 1px solid #5a698f;
-  box-shadow: var(--shadow-two);
+  background-color: #161D2F;
+  border-radius: 8px;
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  overflow-y: auto;
-  scrollbar-width: none;
+  gap: 2rem;
 }
 
 .footer {
   width: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 88px;
-  background-color: transparent;
-  color: #8b939e;
+  justify-content: center;
   font-size: 0.875rem;
-  border-top: 1px solid #5a698f;
-  border-bottom-left-radius: var(--border-radius-lg);
-  border-bottom-right-radius: var(--border-radius-lg);
+  text-align: center;
+  color: #fff;
+  font-size: 0.875rem;
+
+    a {
+    color: #fc4747;
+    margin-left: 0.25rem;
+    font-weight: 500;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+    }
+}
+
+.formContent form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; // controls vertical space between inputs/buttons
+  width: 100%;
+
+  // optional: make sure inputs stretch fully
+  > * {
+    width: 100%;
+  }
 }

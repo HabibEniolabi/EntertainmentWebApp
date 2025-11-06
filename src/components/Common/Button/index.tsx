@@ -28,7 +28,7 @@ const BeyondButton: FC<BeyondButtonProps> = ({
       label: `${styles.label} ${labelColor}`,
     }}
   >
-    {title}
+    {title?.trim()}
   </Button>
 );
 
