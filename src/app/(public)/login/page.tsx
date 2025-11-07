@@ -49,14 +49,13 @@ const Login = () => {
             error={form.isTouched("password") ? form.errors.password : null}
             className="w-full"
            />
-            <Link href="/trending">
-                <BeyondButton
-                    size="lg"
-                    type="submit"
-                    title={"Login to your account"}
-                    className={styles.loginButton}
-                />
-            </Link>
+          <BeyondButton
+              size="lg"
+              type="submit"
+              href="/trending"
+              title={"Login to your account"}
+              className={styles.loginButton}
+          />
         </form>
       </OnboardingFormContainer>
     </div>

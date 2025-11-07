@@ -58,15 +58,13 @@ const form = useForm({
                     : null
                 }
             />
-            <Link href="/login">
               <BeyondButton
                 size="lg"
                 type="submit"
+                href="/login"
                 title={"Crete an account"}
                 className={styles.signUpButton}
-              />
-            </Link>
-          
+              /> 
         </form>
       </OnboardingFormContainer>
     </div>
