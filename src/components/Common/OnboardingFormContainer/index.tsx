@@ -5,10 +5,14 @@ import Link from "next/dist/client/link";
 
 interface OnboardingFormContainerProps {
   children?: React.ReactNode;
+  footerTitle?: string;
+  footerLink?: string;
 }
 
 const OnboardingFormContainer = ({
   children,
+  footerLink,
+  footerTitle
 }: OnboardingFormContainerProps) => {
   return (
     <div className={styles.onboardingFormContainer}>
@@ -20,8 +24,8 @@ const OnboardingFormContainer = ({
             {children}
         </div>
         <div className={styles.footer}>
-            Don’t have an account?
-            <Link href="/sign-up">Sign Up</Link>
+            {footerTitle}
+            <Link href="/sign-up">{footerLink}</Link>
         </div>
        </div>
     </div>

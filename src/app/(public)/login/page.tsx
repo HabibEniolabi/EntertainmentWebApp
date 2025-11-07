@@ -31,7 +31,8 @@ const Login = () => {
   return (
     <div className={styles.loginPage}>
       <OnboardingFormContainer
-        
+        footerLink=" Sign Up"
+        footerTitle="Don't have an account?"
       >
         <div className={styles.text}>Login</div>
         <form
@@ -41,13 +42,13 @@ const Login = () => {
           <Input
             placeholder="Enter address"
             {...form.getInputProps("email")}
-            error={form.errors.email}
+            error={form.isTouched("email") ? form.errors.email : null}
             className="w-full"
           />
             <Password
               placeholder="Password"
               {...form.getInputProps("password")}
-              error={form.errors.password}
+              error={form.isTouched("password") ? form.errors.password : null}
               className="w-full"
             />
           <BeyondButton

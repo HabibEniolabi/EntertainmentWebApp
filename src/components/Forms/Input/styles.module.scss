@@ -1,26 +1,17 @@
-// styles.module.scss
-
-// .label {
-//   font-size: 14px;
-//   font-weight: 500;
-//   color: #ffffff;
-//   margin-bottom: 8px;
-// }
-
 .required {
   color: #fc4747 !important; // Red color for required asterisk
 }
 
 .input {
-  width: 100%;
-  padding: 12px 16px;
-  font-size: 15px;
-  color: #ffffff;
   background: transparent;
-  padding-bottom: 5px;
+  border: none;
   border-bottom: 1px solid #5a698f;
+  padding: 0.75rem 0;
+  color: #fff;
+  font-size: 0.9375rem;
   outline: none;
-  transition: all 0.3s ease;
+  cursor: pointer;
+  transition: border-color 0.2s;
   
   &::placeholder {
     color: rgba(255, 255, 255, 0.5);
@@ -33,7 +24,7 @@
   }
   
   &:hover:not(:focus) {
-    border-color: rgba(255, 255, 255, 0.5);
+    border-color: #fff;
   }
   
   // Error state - Mantine adds data-invalid attribute

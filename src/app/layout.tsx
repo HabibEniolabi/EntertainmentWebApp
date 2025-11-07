@@ -1,11 +1,16 @@
-// Import styles of packages that you've installed.
-// All packages except `@mantine/hooks` require styles imports
 import '@mantine/core/styles.css';
 import { ColorSchemeScript, MantineProvider, mantineHtmlProps } from '@mantine/core';
 import { ReactNode } from 'react';
-// import { store } from "../";
 import { Provider } from 'react-redux';
 import StoreProvider from './providers';
+import { Outfit } from "next/font/google";
+
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-outfit",
+});
 
 export const metadata = {
   title: 'My Entertainment app',
@@ -22,7 +27,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
       <head>
         <ColorSchemeScript />
       </head>
-      <body>
+      <body className={outfit.variable}>
         <StoreProvider>
           <MantineProvider>
             {children}
