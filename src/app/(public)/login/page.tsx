@@ -1,11 +1,12 @@
 "use client";
 import { useForm } from "@mantine/form";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Input from "@/src/components/Forms/Input";
 import OnboardingFormContainer from "@/src/components/Common/OnboardingFormContainer";
 import Password from "@/src/components/Forms/Password";
 import styles from "./styles.module.scss";
 import BeyondButton from "@/src/components/Common/Button";
+import Link from "next/link";
 
 const Login = () => {
 
@@ -30,10 +31,7 @@ const Login = () => {
 
   return (
     <div className={styles.loginPage}>
-      <OnboardingFormContainer
-        footerLink=" Sign Up"
-        footerTitle="Don't have an account?"
-      >
+      <OnboardingFormContainer>
         <div className={styles.text}>Login</div>
         <form
           className={styles.form}
@@ -45,18 +43,20 @@ const Login = () => {
             error={form.isTouched("email") ? form.errors.email : null}
             className="w-full"
           />
-            <Password
-              placeholder="Password"
-              {...form.getInputProps("password")}
-              error={form.isTouched("password") ? form.errors.password : null}
-              className="w-full"
-            />
-          <BeyondButton
-            size="lg"
-            type="submit"
-            title={"Login to your account"}
-            className={styles.loginButton}
-          />
+          <Password
+            placeholder="Password"
+            {...form.getInputProps("password")}
+            error={form.isTouched("password") ? form.errors.password : null}
+            className="w-full"
+           />
+            <Link href="/trending">
+                <BeyondButton
+                    size="lg"
+                    type="submit"
+                    title={"Login to your account"}
+                    className={styles.loginButton}
+                />
+            </Link>
         </form>
       </OnboardingFormContainer>
     </div>

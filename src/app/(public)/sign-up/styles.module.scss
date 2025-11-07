@@ -1,0 +1,23 @@
+.signUpPage{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+    scrollbar-width: none; /* Firefox */
+    background-color: #10141E;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.text {
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding-bottom: 20px;
+    color: #FFFFFF;
+}

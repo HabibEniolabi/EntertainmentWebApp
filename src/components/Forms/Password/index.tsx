@@ -9,7 +9,6 @@ const Password: FC<PasswordInputProps> = (props): JSX.Element => (
     size="lg"
     withAsterisk
     classNames={{ 
-        // label: styles.label, 
         required: styles.required, 
         input: styles.input, 
         error: styles.error, 

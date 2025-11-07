@@ -8,7 +8,6 @@ const Input: FC<TextInputProps> = (props): JSX.Element => (
     {...props}
     size="lg"
     classNames={{
-    //   label: styles.label,
       required: styles.required,
       input: styles.input,
       error: styles.error,
