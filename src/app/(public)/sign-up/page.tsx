@@ -76,7 +76,6 @@ const SignUp = () => {
           />
           <BeyondButton
             size="lg"
-            // href="/login"
             type="submit"
             title="Create an account"
             loading={loading} // ✅ shows spinner while submitting
