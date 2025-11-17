@@ -4,7 +4,7 @@ import { ReactNode } from 'react';
 import { Provider } from 'react-redux';
 import StoreProvider from './providers';
 import { Outfit } from "next/font/google";
-
+import { Notifications } from '@mantine/notifications';
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -30,6 +30,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
       <body className={outfit.variable}>
         <StoreProvider>
           <MantineProvider>
+            <Notifications />
             {children}
           </MantineProvider>
         </StoreProvider>

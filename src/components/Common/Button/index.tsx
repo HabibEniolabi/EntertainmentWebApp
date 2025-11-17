@@ -20,13 +20,22 @@ const BeyondButton: FC<BeyondButtonProps> = ({
   href,
   labelColor,
   title,
+  onClick,
   type = "button",
   ...props
 }) => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (href && type === "submit") {
+      e.preventDefault(); // Prevent default if we have href but are submitting
+    }
+    onClick?.(e);
+  };
+
   const buttonElement = (
     <Button
       {...props}
       type={type}
+      onClick={onClick}
       classNames={{
         root: styles.root,
         label: `${styles.label} ${labelColor || ""}`,
