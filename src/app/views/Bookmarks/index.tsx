@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useEffect } from 'react';
 import styles from "./styles.module.scss";
 import { useAppDispatch, useAppSelector } from '@/src/lib/store';
