@@ -36,17 +36,21 @@ const SignUp = () => {
   const handleFormSubmit = async (values: any) => {
     setLoading(true);
     try {
-      await createUserWithEmailAndPassword(auth, values.email, values.password); // ✅ await
+      await createUserWithEmailAndPassword(auth, values.email, values.password);
       showNotification({
         title: "Success",
         message: "Account created successfully!",
         color: "green",
       });
-      router.push("/login"); // ✅ redirect after success
+      router.push("/login");
     } catch (error: any) {
+        let msg = error.message;
+        if (error.code === "auth/email-already-in-use") {
+          msg = "Email already exists. Please log in instead.";
+        }
       showNotification({
         title: "Error",
-        message: error.message,
+        message: error.msg, 
         color: "red",
       });
     } finally {
@@ -78,7 +82,7 @@ const SignUp = () => {
             size="lg"
             type="submit"
             title="Create an account"
-            loading={loading} // ✅ shows spinner while submitting
+            loading={loading}
             className={styles.signUpButton}
           />
         </form>

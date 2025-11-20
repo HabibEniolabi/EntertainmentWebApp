@@ -49,12 +49,7 @@ const Sidebar = ({ setShowSidebar, showSidebar }: any): JSX.Element => {
     setShowSidebar(false);
     router.push(link);
   };
-
-//   const handleLogout = () => {
-//     dispatch(clearToken());
-//     router.replace("/login");
-//   };
-
+  
   const links = data.map((item, index) => {
     return (
       <MenuLink
@@ -70,13 +65,13 @@ const Sidebar = ({ setShowSidebar, showSidebar }: any): JSX.Element => {
 
   return (
     <aside
-      className={`${classes.aside} ${
-        showSidebar ? "mobileSidebar active" : ""
-      }`}
+      className={`${styles.aside} ${
+    showSidebar ? `${styles.mobileSidebar} ${styles.active}` : ""
+  }`}
     >
-      <div onClick={() => setShowSidebar(false)} className="mobileSidebarBg" />
+      <div onClick={() => setShowSidebar(false)} className={styles.mobileSidebarBg} />
       <nav
-        className={`${classes.sidebar} lg:w-[250px] h-full flex flex-col justify-between `}
+        className={`${styles.sidebar} lg:w-[250px] h-full flex flex-col justify-between `}
       >
         <div className={styles.menu}>
             <Link
