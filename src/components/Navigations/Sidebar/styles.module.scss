@@ -1,62 +1,34 @@
-// .sidebar {
-//   display: flex;
-//   flex-direction: column;
-//   position: relative;
-//   background-color: transparent;
-//   transition: max-width 0.5s ease-in-out, padding 0.5s ease-in-out;
-//   z-index: 8;
-//   @apply w-full border-r-1 border-solid border-grey-100 border-b-0 border-l-0 border-t-0 pb-xl;
-// }
-
-// .aside {
-//   display: none;
-//   @apply max-w-[272px] w-full md:block;
-// }
-
- .sidebar {
+.sidebar {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: relative;
   background-color: #161d2f;
-  transition: max-width 0.5s ease-in-out, padding 0.5s ease-in-out;
-  z-index: 8;
-
-  width: 100%;
-  height: 100%;
-  padding: 20px;
+  width: 96px;
+  height: 90%;
+  padding: 32px 0;
   border-radius: 20px;
-  border: 1px solid #161d2f;
+  align-items: center;
+  box-sizing: border-box;
+
+  @media (max-width: 375px) {
+    border: none;  
+  }
 }
 
 .aside {
-  display: block;
-  max-width: 272px;
+  position: relative;
+  left: 0;
+  top: 0;
   height: 100vh;
-  width: 100%;
-
-  @media (min-width: 768px) {
-    display: flex;
-    flex-direction: column;
-  }
-
-  @media (max-width: 768px) {
-    max-width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 64px;
-    z-index: 1000;
-  }
+  z-index: 50;
+  width: auto; 
 }
 
-.icon{
+.icon {
   width: 32px;
-  height: 26px;
-  align-items: center;
+  height: 25.6px;
   display: flex;
+  align-items: center;
   justify-content: center;
 }
 
@@ -64,24 +36,60 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding-top: 20px;
-  width: 100%;
   align-items: center;
-
-  @media (max-width: 768px) {
-    flex-direction: row;
-  }
+  width: 100%;
 }
 
-.menu{
+.menu {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 100%;
-  gap: 20px;
   align-items: center;
+  gap: 30px;
+  flex: 1;
+  justify-content: flex-start;
+  width: 100%; 
+}
 
-   @media (max-width: 768px) {
+.menuLink, .menuLinks a, .menuLinks div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .aside {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 72px;
+    margin: 0;
+    z-index: 1000;
+    padding: 16px;
+  }
+  
+  .sidebar {
     flex-direction: row;
+    width: 100%;
+    height: 72px;
+    margin: 0;
+    border-radius: 20px;
+    padding: 16px 24px;
+    justify-content: space-between;
+    box-sizing: border-box;
+  }
+  
+  .menu {
+    flex-direction: row;
+    gap: 30px;
+    flex: 1;
+  }
+  
+  .menuLinks {
+    flex-direction: row;
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+    width: auto;
   }
 }

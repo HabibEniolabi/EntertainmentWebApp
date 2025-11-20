@@ -4,4 +4,8 @@
     border-radius: 50%;
     overflow: hidden;
     border: 1px solid white;
+
+    @media screen and (max-width: 768px) {
+        overflow: visible;
+    }
 }
