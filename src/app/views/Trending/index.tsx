@@ -1,3 +1,4 @@
+'use client';
 import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@/src/lib/store';
 import { RootState } from '@/src/lib/store';

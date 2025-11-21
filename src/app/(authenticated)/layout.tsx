@@ -5,6 +5,7 @@ import Sidebar from '@/src/components/Navigations/Sidebar';
 import Header from '@/src/components/Navigations/Header';
 import { useAppDispatch } from '@/src/lib/store';
 import { fetchMedia, syncBookmarks } from '@/src/lib/store/slices/mediaSlice';
+import { Suspense } from 'react';
 
 
 interface LayoutProps {
@@ -24,7 +25,9 @@ const Layout = ({ children }: LayoutProps):React.ReactNode => {
       </div>
       <div className={styles.dashboard_header}>
         <div>
-          <Header />
+          <Suspense fallback={<div>Loading Header...</div>}>
+            <Header />
+          </Suspense>
         </div>
         <div className='overflow-y-auto no-scrollbar h-full'>
         <main className='overflow-y-auto no-scrollbar'>{children}</main>

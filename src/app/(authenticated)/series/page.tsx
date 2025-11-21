@@ -1,9 +1,11 @@
-"use client";
 import React from "react";
+import { Suspense } from "react";
 import TvSeries from "@/src/app/views/Tv-Series";
 
-const TVSeries = () => {
-  return <TvSeries />
+export default function TVSeries() {
+  return(
+    <Suspense fallback={<div>Loading TV Series...</div>}>
+      <TvSeries />
+    </Suspense>
+  )
 };
-
-export default TVSeries;

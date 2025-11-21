@@ -1,9 +1,11 @@
-"use client";
 import React from "react";
+import { Suspense } from "react";
 import Movie from "@/src/app/views/Movie"
 
-const Movies = () => {
-  return <Movie />
-};
-
-export default Movies;
+export default function Movies ()  {
+  return (
+    <Suspense fallback={<div>Loading Movies...</div>}>
+      <Movie />
+    </Suspense>
+  )
+}
