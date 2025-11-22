@@ -1,6 +1,6 @@
 "use client";
 import { useForm } from "@mantine/form";
-import React from "react";
+import React, { useEffect } from "react";
 import Input from "@/src/components/Forms/Input";
 import OnboardingFormContainer from "@/src/components/Common/OnboardingFormContainer";
 import Password from "@/src/components/Forms/Password";
@@ -15,6 +15,8 @@ import { showNotification } from "@mantine/notifications";
 const Login = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [loginError, setLoginError] = useState<string | null>(null);
+  const [loginSuccess, setLoginSuccess] = useState<string | null>(null);
   const auth = getAuth(app);
 
   const form = useForm({
@@ -32,30 +34,55 @@ const Login = () => {
     },
   });
 
-  const handleFormSubmit = async (values: any) => {
-    setLoading(true);
-    try{
-      await signInWithEmailAndPassword(auth, values.email, values.password);
-      showNotification({
-        title: "Success",
-        message: "Account logged In successfully!",
-        color: "green",
-      });
-      router.push("/trending");
-    } catch (error: any) {
-      let message = "Login failed";
-      if (error.code === "auth/user-not-found") message = "Email not registered";
-      if (error.code === "auth/wrong-password") message = "Incorrect password";
-
+  useEffect(() => {
+    if (loginError) {
       showNotification({
         title: "Error",
-        message,
+        message: loginError,
         color: "red",
       });
+      setLoginError(null); 
+    } else if (loginSuccess) { 
+      showNotification({
+        title: "Success",
+        message: loginSuccess,
+        color: "green",
+      });
+      
+      setTimeout(() => {
+          router.push("/trending");
+      }, 100);
+      
+      setLoginSuccess(null);
+    }
+  }, [loginError, loginSuccess, router]);
+  const handleFormSubmit = async (values: any) => {
+    setLoading(true);
+    setLoginError(null);
+    setLoginSuccess(null); 
+    try{
+      await signInWithEmailAndPassword(auth, values.email, values.password);
+      setLoginSuccess("Account logged in successfully!");
+    } catch (error: any) {
+      let message = "Login unsuccessful. Double-check your email and password.";
+      switch (error.code) {
+      case "auth/invalid-credential":
+      case "auth/user-not-found":
+      case "auth/wrong-password":
+        message = "Login details not recognized. Haven't signed up yet? Go to Sign Up.";
+        break;
+      case "auth/invalid-email":
+        message = "Please enter a valid email address.";
+        break;
+      default:
+        message = "An unexpected error occurred. Please try again later.";
+    }
+      setLoginError(message);
+      setLoading(false);
     } finally {
       setLoading(false);
     }
-  };
+  }
 
   return (
     <div className={styles.loginPage}>

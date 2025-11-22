@@ -55,21 +55,36 @@ const mediaSlice = createSlice({
       const itemId = action.payload;
       const updateBookmark = (item: MediaItem) => 
         item.id === itemId ? { ...item, isBookmarked: !item.isBookmarked } : item;
-      
+
+      // 1. UPDATE THE STATE FIRST
       state.items = state.items.map(updateBookmark);
       state.trending = state.trending.map(updateBookmark);
       state.recommended = state.recommended.map(updateBookmark);
 
-      // ✅ persist to localStorage
-      localStorage.setItem('bookmarks', JSON.stringify(state.items));
+      // 2. 🟢 CALCULATE THE NEW, CORRECT LIST OF BOOKMARKED IDs
+      const bookmarkedIds = state.items
+        .filter(item => item.isBookmarked)
+        .map(item => item.id);
+      
+      // 3. PERSIST THE NEW LIST
+      localStorage.setItem('bookmarks', JSON.stringify(bookmarkedIds));
     },
     syncBookmarks: (state) => {
       const stored = localStorage.getItem('bookmarks');
       if (stored) {
-        const saved = JSON.parse(stored);
-        state.items = saved;
-        state.trending = saved.filter((i: MediaItem) => i.isTrending);
-        state.recommended = saved.filter((i: MediaItem) => !i.isTrending);
+        const bookmarkedIds = JSON.parse(stored); // This is an array of IDs (strings)
+        const bookmarkedIdSet = new Set(bookmarkedIds);
+
+        // Function to apply the isBookmarked status based on the saved IDs
+        const applyBookmarkStatus = (item: MediaItem) => ({
+          ...item,
+          isBookmarked: bookmarkedIdSet.has(item.id),
+        });
+
+        // Apply the bookmark status to all list items
+        state.items = state.items.map(applyBookmarkStatus);
+        state.trending = state.trending.map(applyBookmarkStatus);
+        state.recommended = state.recommended.map(applyBookmarkStatus);
       }
     }
   },
@@ -80,10 +95,29 @@ const mediaSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchMedia.fulfilled, (state, action) => {
-        state.loading = false;
-        state.items = action.payload;
-        state.trending = action.payload.filter((item: MediaItem) => item.isTrending);
-        state.recommended = action.payload.filter((item: MediaItem) => !item.isTrending);
+          state.loading = false;
+          
+          // 1. Set the fresh data
+          state.items = action.payload;
+          state.trending = action.payload.filter((item: MediaItem) => item.isTrending);
+          state.recommended = action.payload.filter((item: MediaItem) => !item.isTrending);
+          
+          // 2. 🟢 CRITICAL: Immediately apply the stored bookmarks to the FRESH data
+          //    This is the content of the syncBookmarks reducer, run inline here.
+          const stored = localStorage.getItem('bookmarks');
+          if (stored) {
+              const bookmarkedIds = JSON.parse(stored);
+              const bookmarkedIdSet = new Set(bookmarkedIds);
+
+              const applyBookmarkStatus = (item: MediaItem) => ({
+                  ...item,
+                  isBookmarked: bookmarkedIdSet.has(item.id),
+              });
+
+              state.items = state.items.map(applyBookmarkStatus);
+              state.trending = state.trending.map(applyBookmarkStatus);
+              state.recommended = state.recommended.map(applyBookmarkStatus);
+          }
       })
       .addCase(fetchMedia.rejected, (state, action) => {
         state.loading = false;

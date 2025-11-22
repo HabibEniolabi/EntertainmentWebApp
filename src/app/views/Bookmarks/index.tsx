@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import styles from "./styles.module.scss";
 import { useAppDispatch, useAppSelector } from '@/src/lib/store';
 import { RootState } from '@/src/lib/store';
-import { fetchMedia } from '@/src/lib/store/slices/mediaSlice';
+import { fetchMedia, syncBookmarks } from '@/src/lib/store/slices/mediaSlice';
 import { MediaGrid } from '@/src/components/card/MediaGrid/MediaGrid';
 import { useSearchParams } from 'next/navigation';
 import { MediaCard } from '@/src/components/card/MediaCard/MediaCard';
@@ -28,7 +28,14 @@ const Bookmark = () => {
     );
   
     useEffect(() => {
-      dispatch(fetchMedia());
+     dispatch(fetchMedia())
+      .unwrap() 
+      .then(() => {
+        dispatch(syncBookmarks());
+      })
+      .catch(error => {
+        console.error("Failed to load media or sync bookmarks:", error);
+      });
     }, [dispatch]);
   
     if (loading) return <div className="loading">Loading...</div>;
