@@ -42,7 +42,7 @@ const SignUp = () => {
         message: "Account created successfully!",
         color: "green",
       });
-      router.push("/login");
+      router.push("/trending");
     } catch (error: any) {
         let msg = error.message;
         if (error.code === "auth/email-already-in-use") {

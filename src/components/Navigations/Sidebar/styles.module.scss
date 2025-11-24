@@ -93,3 +93,9 @@
     width: auto;
   }
 }
+
+@media (max-width: 375px){
+  .menuLinks{
+    gap: 10px;
+  }
+}
