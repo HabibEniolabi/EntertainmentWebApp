@@ -2,8 +2,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import MenuLink from "../MenuLink";
-import classes from "./styles.module.scss";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "@/src/lib/store";
 import User from '@/src/assets/images/image-avatar.png';
 import Profile from "../Profile";
 import { JSX } from "react";
@@ -13,6 +12,7 @@ import Trending from "@/src/assets/icons/Trending";
 import TvSeries from "@/src/assets/icons/TvSeries";
 import MovieList from "@/src/assets/icons/MovieList";
 import styles from "./styles.module.scss";
+import { logoutUser } from "@/src/lib/store/slices/authSlice";
 
 const data = [
   {
@@ -38,7 +38,7 @@ const data = [
 ];
 
 const Sidebar = ({ setShowSidebar, showSidebar }: any): JSX.Element => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const router = useRouter();
   const pathname = usePathname();
 
@@ -49,6 +49,15 @@ const Sidebar = ({ setShowSidebar, showSidebar }: any): JSX.Element => {
     setShowSidebar(false);
     router.push(link);
   };
+
+  const handleLogout = async () => {
+    try{
+      await dispatch(logoutUser()).unwrap();
+      router.push("/login");
+    }catch (error) {
+      console.error("Logout process failed.");
+    }
+  }
   
   const links = data.map((item, index) => {
     return (
@@ -86,7 +95,9 @@ const Sidebar = ({ setShowSidebar, showSidebar }: any): JSX.Element => {
               {links}
           </div>
         </div>
-       <Profile image={User}/>
+        <div title="Logout" onClick={handleLogout}>
+          <Profile image={User}/>
+        </div>
       </nav>
     </aside>
   );

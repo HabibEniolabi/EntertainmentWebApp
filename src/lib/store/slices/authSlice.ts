@@ -1,19 +1,13 @@
-// src/lib/store/slices/authSlice.ts
-
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { AuthState } from '../../../types'; // Assuming AuthState is here
 import { auth } from '@/src/firebaseconfig'; // Import Firebase Auth
-import { User, onAuthStateChanged } from 'firebase/auth'; 
+import { User, onAuthStateChanged, signOut } from 'firebase/auth'; 
 
 const initialState: AuthState = {
   user: null, // Holds { uid: string, email: string }
   isAuthenticated: false,
   loading: true, // Start as loading until Firebase checks status
 };
-
-// -----------------------------------------
-// ASYNC THUNK: Observing Firebase Auth State
-// -----------------------------------------
 
 // This thunk is designed to be dispatched once on app startup (e.g., in providers.tsx).
 // It sets up a persistent listener for Firebase Auth changes.
@@ -40,6 +34,25 @@ export const initializeAuthListener = createAsyncThunk(
   }
 );
 
+export const logoutUser = createAsyncThunk(
+  'auth/logout',
+  async (_, { dispatch }) => {
+    try {
+      // 1. Call the Firebase signOut method to end the session
+      await signOut(auth);
+      
+      // 2. Dispatch the local action to clear Redux state immediately
+      // NOTE: The onAuthStateChanged listener above will also dispatch clearUser(), 
+      // but dispatching it here provides immediate UI feedback.
+      dispatch(clearUser()); 
+
+    } catch (error) {
+      console.error('Logout Failed:', error);
+      // You may choose to re-throw the error or handle it gracefully
+      throw error; 
+    }
+  }
+);
 
 const authSlice = createSlice({
   name: 'auth',
