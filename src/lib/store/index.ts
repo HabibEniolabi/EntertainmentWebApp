@@ -3,6 +3,8 @@ import mediaReducer from './slices/mediaSlice';
 import bookmarksReducer from './slices/bookmarksSlice';
 import searchReducer from './slices/searchSlice';
 import uiReducer from './slices/uiSlice';
+import authReducer from './slices/authSlice';
+
 import { useDispatch, useSelector, TypedUseSelectorHook } from 'react-redux';
 
 export const makeStore = () => {
@@ -12,6 +14,7 @@ export const makeStore = () => {
       bookmarks: bookmarksReducer,
       search: searchReducer,
       ui: uiReducer,
+      auth: authReducer,
     },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({

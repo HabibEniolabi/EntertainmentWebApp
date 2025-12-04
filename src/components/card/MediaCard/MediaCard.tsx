@@ -6,6 +6,7 @@ import styles from './styles.module.scss';
 import PathBookmark from '@/src/assets/icons/PathBookmark';
 import Movie from '@/src/assets/icons/Movie';
 import TvSeries from '@/src/assets/icons/TvSeries';
+import { toggleBookmarkAndSync } from '@/src/lib/store/slices/mediaSlice';
 
 interface MediaCardProps {
   item: MediaItem;
@@ -18,7 +19,7 @@ export const MediaCard: React.FC<MediaCardProps> = ({ item, variant = 'regular' 
   const handleBookmark = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    dispatch(toggleBookmark(item.id));
+    dispatch(toggleBookmarkAndSync(item));
   };
 
   const getThumbnailSrc = () => {

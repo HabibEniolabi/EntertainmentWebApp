@@ -41,3 +41,28 @@ export interface UIState {
   sidebarOpen: boolean;
   currentView: 'home' | 'movies' | 'tv-series' | 'bookmarks';
 }
+
+export interface AuthState {
+  user: {
+    uid: string;
+    email: string;
+  } | null;
+  isAuthenticated: boolean;
+  loading: boolean;
+}
+
+// ----------------------------------------------------
+// ✅ RootState Definition (Defining it right here)
+// ----------------------------------------------------
+
+/**
+ * RootState: The master type for the entire Redux store.
+ * Keys must match the property names used in configureStore's reducer object.
+ */
+export interface RootState {
+  media: MediaState;
+  bookmarks: BookmarksState;
+  search: SearchState;
+  ui: UIState;
+  auth: AuthState; // Maps to the 'auth' slice in your store
+}

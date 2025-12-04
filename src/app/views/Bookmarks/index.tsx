@@ -10,7 +10,8 @@ import { MediaCard } from '@/src/components/card/MediaCard/MediaCard';
 
 const Bookmark = () => {
   const dispatch = useAppDispatch();
-    const { loading, error, items } = useAppSelector((state: RootState) => state.media);
+    const { loading: mediaLoading, error, items } = useAppSelector((state: RootState) => state.media);
+    const { user, loading: authLoading, isAuthenticated } = useAppSelector((state: RootState) => state.auth);
     const searchParams = useSearchParams();
     const searchQuery = searchParams.get('q') || ''; // Just reading from URL
     const bookmarkedMovies = items.filter(item => 
@@ -27,19 +28,37 @@ const Bookmark = () => {
       item.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
   
-    useEffect(() => {
-     dispatch(fetchMedia())
-      .unwrap() 
-      .then(() => {
+    // useEffect(() => {
+    //  dispatch(fetchMedia())
+    //   .unwrap() 
+    //   .then(() => {
+    //     dispatch(syncBookmarks());
+    //   })
+    //   .catch(error => {
+    //     console.error("Failed to load media or sync bookmarks:", error);
+    //   });
+    // }, [dispatch]);
+  useEffect(() => {
+     dispatch(fetchMedia());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (!authLoading && user) {
+        console.log("Auth check FINISHED. User is logged in. Dispatching syncBookmarks.");
         dispatch(syncBookmarks());
-      })
-      .catch(error => {
-        console.error("Failed to load media or sync bookmarks:", error);
-      });
-    }, [dispatch]);
-  
-    if (loading) return <div className="loading">Loading...</div>;
-    if (error) return <div className="error">Error: {error}</div>;
+    }
+  }, [dispatch, authLoading, user]);
+
+  if (authLoading || mediaLoading) return <div className="loading">Loading...</div>;
+  if (error) return <div className="error">Error: {error}</div>;
+
+  if (!isAuthenticated) {
+      return (
+        <div className={styles.pageContent}>
+          <h1 style={{textAlign: 'center'}}>Please log in to view your persistent bookmarks.</h1>
+        </div>
+      );
+  }
   
   return (
    <div className={styles.pageContent}>
