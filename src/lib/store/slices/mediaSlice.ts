@@ -121,24 +121,6 @@ const mediaSlice = createSlice({
 
       
     },
-    // syncBookmarks: (state) => {
-    //   const stored = localStorage.getItem('bookmarks');
-    //   if (stored) {
-    //     const bookmarkedIds = JSON.parse(stored); // This is an array of IDs (strings)
-    //     const bookmarkedIdSet = new Set(bookmarkedIds);
-
-    //     // Function to apply the isBookmarked status based on the saved IDs
-    //     const applyBookmarkStatus = (item: MediaItem) => ({
-    //       ...item,
-    //       isBookmarked: bookmarkedIdSet.has(item.id),
-    //     });
-
-    //     // Apply the bookmark status to all list items
-    //     state.items = state.items.map(applyBookmarkStatus);
-    //     state.trending = state.trending.map(applyBookmarkStatus);
-    //     state.recommended = state.recommended.map(applyBookmarkStatus);
-    //   }
-    // }
   },
   extraReducers: (builder) => {
     builder

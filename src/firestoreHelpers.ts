@@ -1,4 +1,3 @@
-// src/lib/firebase/firestoreHelpers.ts
 import { firestore } from './firebaseconfig';
 import { MediaItem } from '@/src/types'; // Assuming types are accessible here
 import { collection, doc, setDoc, deleteDoc, getDocs } from 'firebase/firestore';

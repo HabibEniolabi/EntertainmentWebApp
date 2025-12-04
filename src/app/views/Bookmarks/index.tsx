@@ -27,17 +27,7 @@ const Bookmark = () => {
     const filteredItems = bookmarkedMovies.filter(item =>
       item.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
-  
-    // useEffect(() => {
-    //  dispatch(fetchMedia())
-    //   .unwrap() 
-    //   .then(() => {
-    //     dispatch(syncBookmarks());
-    //   })
-    //   .catch(error => {
-    //     console.error("Failed to load media or sync bookmarks:", error);
-    //   });
-    // }, [dispatch]);
+    
   useEffect(() => {
      dispatch(fetchMedia());
   }, [dispatch]);

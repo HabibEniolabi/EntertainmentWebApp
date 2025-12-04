@@ -51,14 +51,6 @@ export interface AuthState {
   loading: boolean;
 }
 
-// ----------------------------------------------------
-// ✅ RootState Definition (Defining it right here)
-// ----------------------------------------------------
-
-/**
- * RootState: The master type for the entire Redux store.
- * Keys must match the property names used in configureStore's reducer object.
- */
 export interface RootState {
   media: MediaState;
   bookmarks: BookmarksState;
